@@ -9,10 +9,16 @@ var languageOverrides = {
 }
 
 marked.setOptions({
+    /**
     highlight: function(code, lang){
         if(languageOverrides[lang]) lang = languageOverrides[lang];
         return hljs.LANGUAGES[lang] ? hljs.highlight(lang, code).value : code;
-    }
+    },*/
+
+    highlight: function (code) {
+        return hljs.highlightAuto(code).value;
+    },
+    breaks : true
 });
 
 function update(e){

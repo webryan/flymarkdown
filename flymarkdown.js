@@ -45,9 +45,17 @@ editor.on("change", function(cm, change) {
 
 //scroll bar sync
 editor.on("scroll",function(cm){ 
-	var obj = cm.getScrollInfo();
+	var obj = cm.getScrollInfo(); 
 	var dom = document.getElementById('out');
-	dom.scrollTop = Math.floor(dom.scrollHeight*obj.top/obj.height);
+	
+	var sh = obj.height;
+	var ch = obj.clientHeight;
+	var ch2 = ch;
+	var st = obj.top;
+	var sh2 = dom.scrollHeight;
+	
+    console.log();	
+    dom.scrollTop = Math.floor(st * (sh2 - ch) / (sh - ch));
 });
 
 

@@ -2,25 +2,19 @@ var URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
 navigator.saveBlob = navigator.saveBlob || navigator.msSaveBlob || navigator.mozSaveBlob || navigator.webkitSaveBlob;
 window.saveAs = window.saveAs || window.webkitSaveAs || window.mozSaveAs || window.msSaveAs;
 
-// Because highlight.js is a bit awkward at times
-var languageOverrides = {
-    js: 'javascript',
-    html: 'xml'
-}
+
 
 marked.setOptions({
-    /**
-    highlight: function(code, lang){
-        if(languageOverrides[lang]) lang = languageOverrides[lang];
-        return hljs.LANGUAGES[lang] ? hljs.highlight(lang, code).value : code;
-    },*/
-
     highlight: function (code) {
         return hljs.highlightAuto(code).value;
     },
-    breaks : true
+    breaks : true,
+    langPrefix:'hljs '
 });
 
+//mathjax setting: no typesetting message
+MathJax.Hub.config.messageStyle = 'none';
+ 
 function update(e){
     var val = e.getValue();
     setOutput(val);
@@ -29,11 +23,24 @@ function update(e){
 }
 
 function setOutput(val){
+    /**
+     * set val to latex img
     val = val.replace(/<equation>((.*?\n)*?.*?)<\/equation>/ig, function(a, b){
         return '<img src="http://latex.codecogs.com/png.latex?' + encodeURIComponent(b) + '" />';
     });
-
-    document.getElementById('out').innerHTML = marked(val);
+    */
+	val = marked(val);
+    //extend marked by note tag
+    val = val.replace(/\{\{tags:(.*)\}\}/ig,function(a,b){
+        var ls = b.replace(/(^\s*)|(\s*$)/g,'').split(/[ /|]/).join('</code><code>'); 
+		return '<p class="marked_tag"><i class="iconfont">&#xe602;</i><code>'+ls+'</code></p>';
+    });
+	
+    document.getElementById('out').innerHTML = val;
+	//use for refresh math 
+    if (val.replace(/\$\$(.*)\$\$/i)){
+	    MathJax.Hub.Typeset(); 
+    }
 }
 
 var editor = CodeMirror.fromTextArea(document.getElementById('code'), {
@@ -130,3 +137,5 @@ if(window.location.hash){
     update(editor);
     editor.focus();
 }
+
+

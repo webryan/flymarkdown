@@ -3,31 +3,31 @@
 <html>
 <head>
   <title>Markdown Editor</title>
-  <script src="marked.js"></script>
-  <script src="highlight.min.js"></script>
+  <script src="lib/marked.js"></script>
+  <script src="lib/highlight.min.js"></script>
   <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
   
-  <script src="lib/codemirror.js"></script>
-  <script src="addon/mode/overlay.js"></script> 
-  <script src="mode/xml/xml.js"></script>
-  <script src="mode/markdown/markdown.js"></script> 
-  <script src="mode/gfm/gfm.js"></script>
-  <script src="mode/javascript/javascript.js"></script>
+  <script src="lib/codemirror/lib/codemirror.js"></script>
+  <script src="lib/codemirror/addon/mode/overlay.js"></script> 
+  <script src="lib/codemirror/mode/xml/xml.js"></script>
+  <script src="lib/codemirror/mode/markdown/markdown.js"></script> 
+  <script src="lib/codemirror/mode/gfm/gfm.js"></script>
+  <script src="lib/codemirror/mode/javascript/javascript.js"></script>
   
-  <script src="rawinflate.js"></script>
-  <script src="rawdeflate.js"></script>
+  <script src="lib/rawinflate.js"></script>
+  <script src="lib/rawdeflate.js"></script>
   <!--[if IE]>  
   <script src="base64.min.js"></script>
   <![endif]-->
 
 <script type="text/javascript"
-  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  src="lib/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 
-  <link rel="stylesheet" href="lib/codemirror.css">
-  <link rel="stylesheet" href="flymarkdown.css">
-  <link rel="stylesheet" href="highlight/styles/monokai_sublime.css">
-  <link rel="stylesheet" href="theme/ryan-dark.css">
+  <link rel="stylesheet" href="lib/codemirror/lib/codemirror.css">
+  <link rel="stylesheet" href="css/flymarkdown.css">
+  <link rel="stylesheet" href="lib/highlight/styles/monokai_sublime.css">
+  <link rel="stylesheet" href="lib/codemirror/theme/ryan-dark.css">
 </head>
 <body>
   <div id="in"><form><textarea id="code"># 欢迎使用IMWeb 马克糖
@@ -123,6 +123,6 @@ $$	x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a} $$
 </textarea></form></div>
   <div id="out"></div>
 
-<script src="flymarkdown.js"></script>
+<script src="js/flymarkdown.js"></script>
 </body>
 </html>

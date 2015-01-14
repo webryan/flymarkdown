@@ -43,11 +43,12 @@ function setOutput(val){
     }
 }
 
+
 var editor = CodeMirror.fromTextArea(document.getElementById('code'), {
     mode: 'gfm',
     lineNumbers: true,
     matchBrackets: true,
-    lineWrapping: true,
+    lineWrapping: true, 
     theme: 'ryan-dark' 
 });
 

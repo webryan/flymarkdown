@@ -22,12 +22,14 @@ CodeMirror.defineMode("gfm", function(config, modeConfig) {
       return {
         code: false,
         codeBlock: false,
+        tagFlag: false,
         ateSpace: false
       };
     },
     copyState: function(s) {
       return {
         code: s.code,
+        tagFlag: s.tagFlag,
         codeBlock: s.codeBlock,
         ateSpace: s.ateSpace
       };
@@ -51,6 +53,18 @@ CodeMirror.defineMode("gfm", function(config, modeConfig) {
         stream.skipToEnd();
         state.codeBlock = true;
         return null;
+      }
+      //{{tags:}} by henry
+      if (stream.sol() && stream.match(/^\{\{tags:(.*)\}\}/)){
+        stream.skipToEnd();
+        state.tagFlag = true;
+        return 'tagflag';
+      }
+
+      if (stream.sol() && stream.match(/^\$\$(.*)\$\$/)){
+        stream.skipToEnd();
+        state.math = true;
+        return 'math';
       }
       // If this block is changed, it may need to be updated in Markdown mode
       if (stream.peek() === '`') {

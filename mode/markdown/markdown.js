@@ -66,6 +66,8 @@ CodeMirror.defineMode("markdown", function(cmCfg, modeCfg) {
   ,   linkhref = 'string'
   ,   em       = 'em'
   ,   strong   = 'strong'
+  ,   tagflag   = 'tagflag'
+  ,   math   = 'math'
   ,   strikethrough = 'strikethrough';
 
   var hrRE = /^([*\-=_])(?:\s*\1){2,}\s*$/
@@ -74,6 +76,8 @@ CodeMirror.defineMode("markdown", function(cmCfg, modeCfg) {
   ,   taskListRE = /^\[(x| )\](?=\s)/ // Must follow ulRE or olRE
   ,   atxHeaderRE = /^#+/
   ,   setextHeaderRE = /^(?:\={1,}|-{1,})$/
+  ,   tagRE = /^\{\{tags:(.*)\}\}/
+  ,   mathRE = /^\{\{tags:(.*)\}\}/
   ,   textRE = /^[^#!\[\]*_\\<>` "'(~]+/;
 
   function switchInline(stream, state, f) {
@@ -265,6 +269,11 @@ CodeMirror.defineMode("markdown", function(cmCfg, modeCfg) {
     }
 
     if (state.strong) { styles.push(strong); }
+
+    //test by henry
+    if (state.tagflag) { styles.push(tagflag); }
+    if (state.math) { styles.push(math); }
+
     if (state.em) { styles.push(em); }
     if (state.strikethrough) { styles.push(strikethrough); }
 
@@ -311,7 +320,7 @@ CodeMirror.defineMode("markdown", function(cmCfg, modeCfg) {
     }
     return undefined;
   }
-
+  
   function inlineNormal(stream, state) {
     var style = state.text(stream, state);
     if (typeof style !== 'undefined')

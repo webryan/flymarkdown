@@ -1,0 +1,17 @@
+{
+  "name": "marktang", 
+  "description": "packages required to run the examples", 
+  "version": "0.0.1",
+  "dependencies": {
+    "gulp-concat": "*", 
+    "gulp-uglify": "*", 
+    "gulp-imagemin": "*", 
+    "gulp-usemin": "*", 
+    "gulp-minify-css": "*", 
+    "gulp-minify-html": "*", 
+    "gulp-rev": "*", 
+    "gulp-sourcemaps": "*", 
+    "del": "*" 
+  }
+}
+

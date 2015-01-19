@@ -11,7 +11,12 @@
     "gulp-minify-html": "*", 
     "gulp-rev": "*", 
     "gulp-sourcemaps": "*", 
-    "del": "*" 
+    "del": "*", 
+    "evernote": "*", 
+    "styliner": "*", 
+    "resanitize": "*", 
+    "xml-writer": "*", 
+    "juice": "*" 
   }
 }
 

@@ -170,8 +170,7 @@ window.onload = function(){
 
     $('#sidebar').on('click',function(e){
         var type =  $(e.target).attr('_type');
-        switch(type){
-            case 'save_imweb':break;
+        switch(type){ 
             case 'save_md':{
                 save();
             };break;
@@ -184,7 +183,13 @@ window.onload = function(){
                 window.location.reload();
             };break;
             case 'save_imweb': {
-                var val = editor.getValue();
+                console.log('save_imweb')
+                var content = editor.getValue();
+                var form = $("<form/>").attr('action',"http://test.imweb.io/topic/create")
+                .attr('method','post')
+                .attr('target','_blank')
+                .append('<input type="hidden" name="content" value="'+ content +'" />')
+                .appendTo("body").css('display','none').submit();
             };break;
 
             default:;

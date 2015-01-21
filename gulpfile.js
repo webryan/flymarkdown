@@ -101,7 +101,6 @@ gulp.task('mathjax',function(){
 
 // Rerun the task when a file changes
 gulp.task('watch', function() {
-    console.log('haha');
     gulp.watch(paths.scripts, ['scripts']);
     gulp.watch(paths.images, ['images']);
 });

@@ -31,7 +31,8 @@ window.onload = function(){
         extensions: [ "tex2jax.js",  "mml2jax.js", "asciimath2jax.js", "MathMenu.js", "MathZoom.js"],
         TeX: {
             extensions: [ "AMSmath.js",  "AMSsymbols.js", "noErrors.js", "noUndefined.js"]
-        }
+        },
+        imageFont: null
     });
 
     function update(e){

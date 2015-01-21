@@ -3,34 +3,48 @@
 <html>
 <head>
   <title>Markdown Editor</title>
+  <!-- build:css css/style.css-->
+  <link rel="stylesheet" href="lib/codemirror/lib/codemirror.css">
+  <link rel="stylesheet" href="css/flymarkdown.css">
+  <link rel="stylesheet" href="lib/highlight/styles/monokai_sublime.css">
+  <link rel="stylesheet" href="lib/codemirror/theme/ryan-dark.css">
+  <!-- endbuild -->
+ 
+  <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+  <!--[if lte IE 8]>
+  <script src="lib/es5-shim.min.js"></script>
+  <script src="lib/es5-sham.min.js"></script>
+  <![endif]-->
+
+  <!-- build:js lib/lib.js-->
+  <script src="lib/codemirror/lib/codemirror.js"></script>
   <script src="lib/marked.js"></script>
   <script src="lib/highlight.min.js"></script>
-  <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
-  
-  <script src="lib/codemirror/lib/codemirror.js"></script>
+  <script src="lib/rawinflate.js"></script>
+  <script src="lib/rawdeflate.js"></script>
+  <script type="text/javascript" src="lib/mathjax/MathJax.js"></script>
+  <!-- endbuild -->
+
+  <!--[if IE]>  
+  <script src="base64.min.js"></script>
+  <![endif]--> 
+
+  <!-- build:remove -->
+  <script>var _MathJax_DEV_Path = true;</script>
+  <!-- endbuild -->
+
+  <!-- build:js1 js/flymarkdown.js -->
   <script src="lib/codemirror/addon/mode/overlay.js"></script> 
   <script src="lib/codemirror/mode/xml/xml.js"></script>
   <script src="lib/codemirror/mode/markdown/markdown.js"></script> 
   <script src="lib/codemirror/mode/gfm/gfm.js"></script>
   <script src="lib/codemirror/mode/javascript/javascript.js"></script>
-  
-  <script src="lib/rawinflate.js"></script>
-  <script src="lib/rawdeflate.js"></script>
-  <!--[if IE]>  
-  <script src="base64.min.js"></script>
-  <![endif]-->
-
-<script type="text/javascript"
-  src="lib/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-  <link rel="stylesheet" href="lib/codemirror/lib/codemirror.css">
-  <link rel="stylesheet" href="css/flymarkdown.css">
-  <link rel="stylesheet" href="lib/highlight/styles/monokai_sublime.css">
-  <link rel="stylesheet" href="lib/codemirror/theme/ryan-dark.css">
+  <script src="js/flymarkdown.js"></script>
+  <!-- endbuild -->
 </head>
 <body>
-  <div id="in"><form><textarea id="code"># 欢迎使用IMWeb 马克糖
+<div id="main">
+  <div id="in" class="noprint"><form><textarea id="code"># 欢迎使用IMWeb 马克糖
 
 {{tags: 马克糖 markdown 好玩的编辑器 马克飞象免费版}}
 
@@ -109,7 +123,7 @@ $$	x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a} $$
 
 ### 关于收费
 
-**马克糖**目前已正式发布，为新用户提供 10 天的试用期，试用期过后需要[续费](maxiang.info/vip.html)才能继续使用。未购买或者未及时续费，将不能同步新的笔记。之前保存过的笔记依然可以编辑。
+**马克糖**目前已正式发布，为新用户提供 永久免费试用期，试用期过后需要[续费]()才能继续使用。未购买或者未及时续费，将不能同步新的笔记。之前保存过的笔记依然可以编辑。
 
 
 ### 反馈与建议
@@ -121,8 +135,24 @@ $$	x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a} $$
 
 
 </textarea></form></div>
+  <!--startprint-->
   <div id="out"></div>
-
-<script src="js/flymarkdown.js"></script>
+  <!--endprint-->
+  <div id="save">
+  	<div><a id="save_btn" href="javascript:void(0)"></a></div>
+    <div id="save_panel"></div>
+  </div>
+</div>
+<div id="mask"></div>
+<div id="sidebar">
+  <div class="sidebar_title">保存markdown</div>
+  <div class="sidebar_item">
+    <a _type="save_imweb" href="javascript:void(0)">存到imweb.io</a>
+    <a _type="save_evernote" href="javascript:void(0)">存到evernote</a>
+    <a _type="save_yinxiang" href="javascript:void(0)">存到印象笔记</a>
+    <a _type="save_md" href="javascript:void(0)">.md存到本地</a>
+    <a _type="save_pdf" href="javascript:void(0)">.pdf存到本地</a>
+  </div>
+</div>
 </body>
 </html>

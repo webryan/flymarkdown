@@ -6,12 +6,11 @@
     CodeMirror template by HenryGuo 
     Original Base16 color scheme by Jan T. Sott
 
-*/
-
+*/ 
 .cm-s-ryan-dark.CodeMirror { background-color: #36312C; color: #EBD1B7;
 	font-family: 'Helvetica Neue', Arial, 'Hiragino Sans GB', STHeiti, 'Microsoft YaHei', 'WenQuanYi Micro Hei', SimSun, Song, sans-serif;}
 .cm-s-ryan-dark.CodeMirror pre{line-height: 1.6;font-size:14px;}
-.cm-s-ryan-dark div.CodeMirror-selected {background: #303030 !important;}
+.cm-s-ryan-dark div.CodeMirror-selected {background:#066 !important;}
 .cm-s-ryan-dark .CodeMirror-gutters {background: #36312F; border-right: 0px;}
 .cm-s-ryan-dark .CodeMirror-guttermarker { color: #ac4142; }
 .cm-s-ryan-dark .CodeMirror-guttermarker-subtle { color: #505050; }

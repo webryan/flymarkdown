@@ -82,6 +82,12 @@ gulp.task('images', function() {
     .pipe(gulp.dest('dist/img'));
 });
 
+gulp.task('iconfont', function() {
+    return gulp.src(pre_src+'iconfont.*')
+    .pipe(gulp.dest('dist'));
+});
+
+
 gulp.task('mathjax',function(){
     //mathjax fix
     gulp.src("src/lib/mathjax/**/*.js")

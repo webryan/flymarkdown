@@ -33,6 +33,7 @@ var client = new Evernote.Client({token: authToken, sandbox: true});
 
 var userStore = client.getUserStore();
 
+/**
 userStore.checkVersion(
     "Evernote EDAMTest (Node.js)",
     Evernote.EDAM_VERSION_MAJOR,
@@ -46,13 +47,9 @@ userStore.checkVersion(
     }
 );
 
+*/
 
 /**
- *  test by henry
- for (var key in client){
- console.log(key+':'+client[key]);
- }
- */
 var noteStore = client.getNoteStore();
 
 // List all of the notebooks in the user's account
@@ -62,6 +59,7 @@ var notebooks = noteStore.listNotebooks(function(err, notebooks) {
         console.log("  * " + notebooks[i].name);
     }
 });
+*/
 
 // To create a new note, simply create a new Note object and fill in
 // attributes such as the note's title.
@@ -102,17 +100,21 @@ hashHex = md5.digest('hex');
 //html = html.replace(/ id=".*"/ig,'');
 //html = html.replace(/<p class=".*">/ig,'<p>');
 
-juice("./res.html", function(err, html) {
+juice("./test.html", function(err, html) {
     if (err){
         console.log(err);
         return;
     }
+    console.log(html);
     enmlOfHtmljs.ENMLOfHTML(html,function(err,ENML){
         if (err){
             console.log(err);
             return;
         }
         note.content = ENML;
+
+        console.log(ENML);
+        return;
 
         noteStore.createNote(note, function(err, createdNote) {
             if (err){

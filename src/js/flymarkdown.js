@@ -155,8 +155,7 @@ window.onload = function(){
         editor.focus();
     }
 
-    function postframe(url){
-       var content = editor.getValue();
+    function postframe(url,content){ 
        var form = $("<form/>").attr('action',url)
        .attr('method','post')
        .attr('target','_blank')
@@ -192,10 +191,10 @@ window.onload = function(){
                 window.location.reload();
             };break;
             case 'save_imweb': {
-                postframe("http://test.imweb.io/topic/create"); 
+                postframe("http://test.imweb.io/topic/create",editor.getValue()); 
             };break;
             case 'save_html':{
-                postframe("http://test.imweb.io/marktang/html"); 
+                postframe("http://test.imweb.io/marktang/html",$('#out').html()); 
             };break;
 
             default:;

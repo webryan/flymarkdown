@@ -155,6 +155,15 @@ window.onload = function(){
         editor.focus();
     }
 
+    function postframe(url){
+       var content = editor.getValue();
+       var form = $("<form/>").attr('action',url)
+       .attr('method','post')
+       .attr('target','_blank')
+       .append('<input type="hidden" name="content" value="'+ content +'" />')
+       .appendTo("body").css('display','none').submit();
+   }
+
     // siderbar show
     $('#save_btn').on('click',function(e){
         $('#mask').show();
@@ -183,13 +192,10 @@ window.onload = function(){
                 window.location.reload();
             };break;
             case 'save_imweb': {
-                console.log('save_imweb')
-                var content = editor.getValue();
-                var form = $("<form/>").attr('action',"http://test.imweb.io/topic/create")
-                .attr('method','post')
-                .attr('target','_blank')
-                .append('<input type="hidden" name="content" value="'+ content +'" />')
-                .appendTo("body").css('display','none').submit();
+                postframe("http://test.imweb.io/topic/create"); 
+            };break;
+            case 'save_html':{
+                postframe("http://test.imweb.io/marktang/html"); 
             };break;
 
             default:;

@@ -1,5 +1,7 @@
 var juice = require('juice');
-juice("./test.html", function(err, html) {
+var fs = require('fs');
+
+juice("./test.html", {extraCss:'body{background:red;}'},function(err, html) {
     if (err){
         console.log(err);
         return;

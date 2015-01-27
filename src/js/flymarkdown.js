@@ -181,7 +181,7 @@ window.onload = function(){
         switch(type){ 
             case 'save_md':{
                 save();
-            };break;
+            }break;
             case 'save_pdf':{
                 alert('保存PDF, 打印目标设为"另存为PDF"即可');
                 //$('#sidebar').hide();
@@ -189,13 +189,16 @@ window.onload = function(){
                 document.body.innerHTML = $('#out').html();
                 window.print();
                 window.location.reload();
-            };break;
+            }break;
             case 'save_imweb': {
                 postframe("http://test.imweb.io/topic/create",editor.getValue()); 
-            };break;
+            }break;
             case 'save_html':{
                 postframe("http://test.imweb.io/marktang/html",$('#out').html()); 
-            };break;
+            }break;
+            case 'save_evernote':{
+                postframe("http://test.imweb.io/marktang/evernote_save",$('#out').html()); 
+            }break;
 
             default:;
         }
